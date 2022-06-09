@@ -135,5 +135,34 @@ class EventPost {
 	
 	
 	
+	// In der folgenden Funktion wird der Converter aufgerufen
 	
+	/**
+	 * Generate, return or output date event datas
+	 * @param WP_Post object $post
+	 * @param string $class
+	 * @filter eventpost_get_single
+	 * @return string
+	 */
+	public function get_single($post = null, $class = '', $context='') {
+		if ($post == null) {
+			$post = $this->retreive();
+		}
+		$datas_date = $this->print_date($post, null, $context);
+		$datas_cat = $this->print_categories($post, $context);
+		$datas_loc = $this->print_location($post, $context);
+		$classes = array(
+			'event_data',
+			'status-'.$post->status,
+			'location-type-'.$post->attendance_mode,
+			$class
+		);
+		if ($datas_date != '' || $datas_loc != '') {
+			$rgb = $this->hex2dec($post->color);
+			return '<div class="' . implode(' ', $classes) . '" style="border-left-color:#' . $post->color . ';background:rgba(' . $rgb['R'] . ',' . $rgb['G'] . ',' . $rgb['B'] . ',0.1)" itemscope itemtype="http://microformats.org/profile/hcard">'
+					. apply_filters('eventpost_get_single', $datas_date . $datas_cat . $datas_loc, $post)
+					. '</div>';
+		}
+		return '';
+	}
 	
