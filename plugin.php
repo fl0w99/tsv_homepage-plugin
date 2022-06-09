@@ -1,4 +1,10 @@
 <?php
+
+// Das Beispiel und der Error beginnen ab Zeile 89
+
+
+
+
 /*
   Plugin Name: Event Post
   Plugin URI: https://event-post.com?mtm_campaign=wp-plugin&mtm_kwd=event-post&mtm_medium=dashboard
