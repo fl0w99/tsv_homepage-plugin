@@ -113,8 +113,10 @@ class EventPost {
 	public function hex2dec($color = '000000') {
 		$tbl_color = array();
 		 
-		if (!strstr('#', $color)){
-			$color = '#' . $color;
+		if (!strstr('#', $color)){	
+							// Überprüft, ob ein # in dem String Color vorkommt wenn ja wir 1 zurückgegeben
+							// Gibt immer 1 zurück, außer $color ist '#' 
+			$color = '#' . $color;		// concat
 		}
 		
 		
